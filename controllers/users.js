@@ -6,8 +6,7 @@ const ConflictingRequestError = require('../errors/conflicting-request-error');
 const NotFoundError = require('../errors/not-found-error');
 const UnauthorizedError = require('../errors/unauthorized-err');
 
-// const { NODE_ENV, JWT_SECRET } = process.env;
-const { JWT_SECRET = 'my-super-secret-key' } = process.env;
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const getUser = (req, res, next) => {
   const userId = req.user._id;
@@ -83,11 +82,10 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        // NODE_ENV === 'production' ?
-        JWT_SECRET,
-        //  : 'my-super-secret-key',
+        NODE_ENV === 'production' ? JWT_SECRET : 'my-super-secret-key',
         { expiresIn: '7d' },
       );
+      // eslint-disable-next-line no-console
       console.log('token', token);
       res.cookie('jwt', token, {
         httpOnly: true,
