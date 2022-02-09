@@ -35,6 +35,7 @@ const updateUserInfo = (req, res, next) => {
       if (err.name === 'ValidationError') {
         throw new BadRequestError('Введены некорректные данные');
       }
+      throw err;
     })
     .catch(next);
 };
