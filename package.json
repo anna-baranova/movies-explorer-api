@@ -1,0 +1,39 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "npx eslint .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anna-baranova/movies-explorer-api.git"
+  },
+  "keywords": [],
+  "author": "Anna Baranova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anna-baranova/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/anna-baranova/movies-explorer-api#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "celebrate": "^15.0.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "express": "^4.17.2",
+    "express-winston": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.4",
+    "validator": "^13.7.0",
+    "winston": "^3.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "nodemon": "^2.0.15"
+  }
+}
