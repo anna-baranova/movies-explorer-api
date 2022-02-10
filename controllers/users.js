@@ -90,8 +90,8 @@ const login = (req, res, next) => {
       console.log('token', token);
       res.cookie('jwt', token, {
         httpOnly: true,
-        // sameSite: 'None',
-        // secure: true,
+        sameSite: 'None',
+        secure: true,
       })
         .status(200).send({ token });
     })
