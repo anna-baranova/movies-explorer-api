@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 
 const app = express();
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
-
 const { errors } = require('celebrate');
+
+const cors = require('./middlewares/cors');
+
 const rootRouter = require('./routes');
 const serverError = require('./middlewares/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -19,17 +20,7 @@ mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
   useUnifiedTopology: true,
 });
 
-app.use(cors({
-  origin: [
-    'https://movie-search.nomoredomains.work',
-    'http://movie-search.nomoredomains.work',
-    'http://localhost:3000',
-  ],
-  methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  optionsSuccessStatus: 200,
-  credentials: true,
-}));
+app.use(cors);
 
 app.use(express.json());
 app.use(cookieParser());
