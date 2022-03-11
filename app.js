@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
+
 const { errors } = require('celebrate');
 const rootRouter = require('./routes');
 const serverError = require('./middlewares/serverError');
@@ -30,6 +32,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(requestLogger); // подключаем логгер запросов
 
 app.use('/', rootRouter); // подключаем все роуты
