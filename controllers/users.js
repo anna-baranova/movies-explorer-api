@@ -4,7 +4,7 @@ const User = require('../models/user');
 const BadRequestError = require('../errors/bad-request-error');
 const ConflictingRequestError = require('../errors/conflicting-request-error');
 const NotFoundError = require('../errors/not-found-error');
-const UnauthorizedError = require('../errors/unauthorized-err');
+// const UnauthorizedError = require('../errors/unauthorized-err');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -95,9 +95,9 @@ const login = (req, res, next) => {
       })
         .status(200).send({ token, user });
     })
-    .catch(() => {
-      throw new UnauthorizedError('Необходима авторизация');
-    })
+    // .catch(() => {
+    //   throw new UnauthorizedError('Необходима авторизация');
+    // })
     .catch(next);
 };
 
